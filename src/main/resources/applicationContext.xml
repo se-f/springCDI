@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+<!--    this creates a new bean of type MyFirstClass    -->
+    <bean id="myfirstclassbeanreference" class="com.example.demo.SetterDI.beans.MyFirstClass">
+    </bean>
+
+
+<!--    this creates the SDI target bean    -->
+    <bean id="target" class="com.example.demo.SetterDI.target.TargetClass">
+    <!--        setting the property name "myFirstClass" of the target with the reference of the bean    -->
+        <property name="myFirstClass" ref="myfirstclassbeanreference">
+
+        </property>
+    </bean>
+
+
+
+<!--    this creates the CDI target bean    -->
+
+    <bean id="targetCDI" class="com.example.demo.ConstructorDI.target.TargetClass">
+        <!--        setting the property name "myFirstClass" of the target with the reference of the bean    -->
+            <constructor-arg>
+                <bean class="com.example.demo.ConstructorDI.beans.MyFirstClass" />
+            </constructor-arg>
+    </bean>
+
+</beans>
